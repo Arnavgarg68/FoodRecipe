@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+/*navbar css starts*/
+.navbar-main-body{
+    position: fixed;
+    width: 100vw;
+}
+.navbar-inner-main-body{
+    background-color: white;
+    z-index: 1000;
+    padding:4px 80px 4px 80px;
+    box-shadow: 0px 0px 10px grey,0px 0px 3px rgba(0, 0, 0, 0.225);
+    border-radius: 0px 0px 14px 14px;
+    /* background-color: aqua; */
+    transition: all 0.4s linear;
+}
+.navbar-inner-main-body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.navbar-logo>img{
+    cursor: pointer;
+    max-height: 80px;
+}
+#navbar-elements-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.navbar-container-elements{
+    margin: 10px;
+    font-size: 1.1rem;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s linear;
+}
+.navbar-container-elements:hover{
+    border-bottom: 2px solid orange;
+}
+.navbar-support{
+    border-radius: 20px;
+    background-color: orange;
+    color: white;
+}
+.navbar-support:hover{
+    transform: scale(1.05);
+}
+/* stablize responsiveness */
+.navbar-hamburger{
+    display: none;
+}
+.navbar-hamburger-logo>img{
+    height: 40px;
+}
+
+#navbar-hamburger-menu{
+    margin: 1px;
+    z-index: 2;
+    display: none;
+    position:fixed;
+    right: 0px;
+    background-color: bisque;
+    width:300px ;
+    border-radius: 14px;
+    padding: 5px;
+    box-shadow: -1px 1px 5px grey;
+}
+.navbar-hamburger-menu-items{
+    font-size: 1.2rem;
+    padding: 10px;
+}
+@media screen and (max-width:800px){
+    .navbar-inner-main-body{
+    padding:4px 20px 4px 20px;
+    }
+    #navbar-elements-container{
+        display: none;
+    }
+    .navbar-hamburger{
+        display: block;
+    }
+    
+}
+@media screen and (max-width:500px){
+    .navbar-logo>img{
+        cursor: pointer;
+        height: 60px;
+    }
+    #navbar-hamburger-menu{
+        width: 100vw;
+    }
+}
