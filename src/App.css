@@ -123,9 +123,13 @@ body{
 }
 .card-title{
     text-align: center;
+    font-style: oblique;
+    font-weight: bold;
     font-size: 2rem;
 }
 .card-ingredients-head{
+    font-weight: bold;
+    font-style: italic;
     font-size: 1.3rem;
 }
 .loader-react{

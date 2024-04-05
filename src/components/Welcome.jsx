@@ -15,6 +15,11 @@ export default function Welcome() {
   const handlechange = (e) => {
     setInputfield(e.target.value);
   }
+  const handleKeyPress =(e)=>{
+    if(e.key=='Enter'){
+      handlesearch()
+    }
+  }
   const handlesearch = async () => {
     setLoader(true);
     console.log(inputfield);
@@ -42,7 +47,7 @@ export default function Welcome() {
               <Cursor />
             </h1>
             <div className="welcome-actual-inputarea">
-              <input type="text" id="welcome-search-recipe" placeholder='Enter your recipe name here' spellCheck="false" value={inputfield} onChange={handlechange} />
+              <input type="text" id="welcome-search-recipe" placeholder='Enter your recipe name here' spellCheck="false" value={inputfield} onChange={handlechange} onKeyDown={handleKeyPress}/>
               <button id="welcome-search-recipe-button" onClick={handlesearch}>Search</button>
             </div>
           </div>
