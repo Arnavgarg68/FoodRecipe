@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useTypewriter, Cursor } from 'react-simple-typewriter'
-import BarLoader from 'react-spinners/ClockLoader'
+import BarLoader from 'react-spinners/ClipLoader'
 import Card from './Card';
 import axios from 'axios';
 export default function Welcome() {
@@ -11,6 +11,7 @@ export default function Welcome() {
   });
   const [inputfield, setInputfield] = useState("");
   const [loader, setLoader] = useState(false);
+  const [norecipe, setNorecipe] = useState(false);
   const [fetcheddata, setFetcheddata] = useState([]);
   const handlechange = (e) => {
     setInputfield(e.target.value);
@@ -29,6 +30,10 @@ export default function Welcome() {
           'X-Api-Key': 'sK7jt/zqnnq2hsgj+AQosQ==qUag6oj5lDLmmspe'
         }
       });
+      if(!response.data){
+        setNorecipe(true);
+      }
+      setNorecipe(false);
       setFetcheddata(response.data)
       setLoader(false);
     } catch (error) {
@@ -55,7 +60,7 @@ export default function Welcome() {
         {
           loader?(
             <div className="loader-react">
-              <BarLoader size={50}/>
+              <BarLoader size={70}/>
             </div>
           ) : (
         <div className="welcome-cards-layout">
