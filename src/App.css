@@ -8,20 +8,37 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     backdrop-filter: blur(4px);
 }
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the scrollbar track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: orange; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Roundness of the scrollbar thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: red; /* Color of the scrollbar thumb on hover */
+  }
 /*Welcome page css */
-.welcome-main-body
+.welcome-inner-main-body
 {   
-    width: 100vw;
-    height: 100vh;
+    height: 90vh;
+    
 }
 .welcome-interaction{
     font-style: italic;
     text-shadow: 0px 0px 10px black;
     color: white;
     font-size: 2rem;
-    position: absolute;
+    position: relative;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
@@ -51,7 +68,9 @@ body{
     font-size: 1.5rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.619);
-    border: 5px solid rgba(255, 0, 0, 0.418);
+    border: 5px solid black;
+    box-shadow: 0px 0px 10px black;
+    /* border: 5px solid rgba(255, 0, 0, 0.418); */
     outline: none;
 }
 #welcome-search-recipe-button{
@@ -68,11 +87,51 @@ body{
     border: 2px solid white;
     box-shadow: 1px 1px 10px black;
     cursor: pointer;
-}@media screen and (max-width:800px){
+}
+
+.welcome-cards-layout{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width:800px){
     .welcome-interaction>h1{
         font-size: 1.7rem;
     }
     #welcome-search-recipe{
         width: 90vw;
     }
+}
+/* Card css */
+.card-main-body{
+    margin: 10px auto;
+}
+.card-inner-main-body{
+    /* height: 200px; */
+    margin: auto;
+    width: 85vw;
+    max-width: 600px;
+    min-height: 700px;
+    background-color: bisque;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px black;
+}
+.card-items-common{
+    padding: 10px;
+}
+.card-title{
+    text-align: center;
+    font-size: 2rem;
+}
+.card-ingredients-head{
+    font-size: 1.3rem;
+}
+.loader-react{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100000;
 }
