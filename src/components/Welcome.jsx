@@ -22,22 +22,27 @@ export default function Welcome() {
     }
   }
   const handlesearch = async () => {
+    const searchfield = document.getElementById("welcome-search-recipe");
+    if(!searchfield.value){
+      alert("Search is empty");
+      return;
+    }
     setLoader(true);
-    console.log(inputfield);
     try {
       const response = await axios.get(`https://api.api-ninjas.com/v1/recipe?query=${inputfield}`,{
         headers: {
           'X-Api-Key': 'sK7jt/zqnnq2hsgj+AQosQ==qUag6oj5lDLmmspe'
         }
       });
-      if(!response.data){
+      if(!response.data.length){
         setNorecipe(true);
       }
-      setNorecipe(false);
+      else{
+        setNorecipe(false);
+      }
       setFetcheddata(response.data)
       setLoader(false);
     } catch (error) {
-      console.log(error);
       setLoader(false);
     }
   }
@@ -52,7 +57,7 @@ export default function Welcome() {
               <Cursor />
             </h1>
             <div className="welcome-actual-inputarea">
-              <input type="text" id="welcome-search-recipe" placeholder='Enter your recipe name here' spellCheck="false" value={inputfield} onChange={handlechange} onKeyDown={handleKeyPress}/>
+              <input type="text" id="welcome-search-recipe" placeholder='Enter your recipe name here .....' spellCheck="false" value={inputfield} onChange={handlechange} onKeyDown={handleKeyPress} title='english recipe only' autoFocus/>
               <button id="welcome-search-recipe-button" onClick={handlesearch}>Search</button>
             </div>
           </div>
@@ -62,14 +67,25 @@ export default function Welcome() {
             <div className="loader-react">
               <BarLoader  color="orange" radius={8}/>
             </div>
-          ) : (
-        <div className="welcome-cards-layout">
-          {
-            fetcheddata.map((recipe, index) => (
-              <Card key={index} title={recipe.title} ingredients={recipe.ingredients} servings={recipe.servings} instructions={recipe.instructions} />
-            ))
-          }
-        </div>)
+          ) : 
+          (
+            <div>
+              {
+                  norecipe?(
+                    <div className="welcome-norecipe-error">No recipe found</div>
+                  ):(
+                    <div className="welcome-cards-layout">
+                      {
+                        fetcheddata.map((recipe, index) => (
+                          <Card key={index} title={recipe.title} ingredients={recipe.ingredients} servings={recipe.servings} instructions={recipe.instructions} />
+                        ))
+                      }
+                    </div>)
+              }
+            </div>
+          )
+          
+          
         }
       </div>
 

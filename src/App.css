@@ -67,8 +67,10 @@ body{
     padding: 15px;
     font-size: 1.5rem;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.619);
-    border: 5px solid black;
+    /* background: rgba(255, 255, 255, 0.619); */
+    background: white;
+    /* border: 5px solid black; */
+    border: 0;
     box-shadow: 0px 0px 10px black;
     /* border: 5px solid rgba(255, 0, 0, 0.418); */
     outline: none;
@@ -138,4 +140,10 @@ body{
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: 100000;
+}
+.welcome-norecipe-error{
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
 }
